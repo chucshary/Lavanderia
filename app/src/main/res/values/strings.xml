@@ -1,6 +1,12 @@
 <resources>
-    <string name="app_name">lavandería</string>
+    <string name="app_name">Tu Lavandería</string>
     <string name="action_settings">Settings</string>
     <string name="email">Ingresa tu correo electrónico</string>
     <string name="password">Ingresa tu contraseña</string>
+    <string name="password2">Repetir tu contraseña</string>
+    <string name="title_activity_login">Iniciar sesión</string>
+    <string name="app_id">1024398444284361</string>
+    <string name="facebook_app_name">Lavanderia</string>
+    <string name="title_activity_registration">Registro</string>
+    <string name="title_activity_restore_password">RestorePassword</string>
 </resources>

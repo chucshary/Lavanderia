@@ -1,4 +1,4 @@
-package sharychuc.myapplication;
+package sharychuc.lavanderia;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

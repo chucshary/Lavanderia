@@ -1,4 +1,4 @@
-package sharychuc.myapplication;
+package sharychuc.lavanderia;
 
 import org.junit.Test;
 
