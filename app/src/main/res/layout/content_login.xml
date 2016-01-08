@@ -18,37 +18,54 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         facebook:com_facebook_confirm_logout="false"
-        facebook:com_facebook_tooltip_mode="never_display" />
+        facebook:com_facebook_tooltip_mode="never_display"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="39dp" />
 
     <EditText
         android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/view"
-        android:layout_marginTop="59dp"
         android:hint="@string/email"
-        android:inputType="textEmailAddress" />
+        android:inputType="textEmailAddress"
+        android:drawableLeft="@drawable/email_24dp"
+        android:elegantTextHeight="false"
+        android:layout_below="@+id/editText"
+        android:layout_alignParentEnd="true" />
 
     <EditText
         android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/email"
-        android:layout_marginTop="26dp"
         android:ems="10"
         android:hint="@string/password"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:drawableLeft="@drawable/ic_lock_black_24dp"
+        android:layout_alignParentStart="true"
+        android:elegantTextHeight="false"
+        android:layout_below="@+id/email"
+        android:layout_alignParentRight="true" />
 
-    <TextView
-        android:layout_width="match_parent"
+    <Button
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Olvide mi contraseña"
-        android:id="@+id/textView"
+        android:id="@+id/btnRestorePassword"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
         android:layout_below="@+id/password"
-        android:layout_marginTop="34dp"
-        android:layout_alignEnd="@+id/password"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentRight="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:text="ó"
+        android:autoText="false"
+        android:editable="false"
+        android:elegantTextHeight="true"
+        android:layout_below="@+id/view"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
