@@ -24,5 +24,10 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="users_fragment">Usuarios</string>
+    <string name="orders_fragment">Pedidos</string>
     <string name="prices_fragment">Precios</string>
+    <string name="manage_fragment">Herramientas</string>
+    <string name="share_fragment">Compartir</string>
+    <string name="send_fragment">Enviar</string>
 </resources>

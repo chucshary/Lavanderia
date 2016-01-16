@@ -1,7 +1,8 @@
 package sharychuc.lavanderia;
 
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.Fragment;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -84,20 +85,31 @@ public class Home extends AppCompatActivity
         int id = item.getItemId();
         String title = item.getTitle().toString();
         if (id == R.id.nav_user) {
-
+            title = getString(R.string.users_fragment);
+            fragment = new UserFragment();
         } else if (id == R.id.nav_orders) {
-
+            title = getString(R.string.orders_fragment);
+            fragment = new OrdersFragment();
         } else if (id == R.id.nav_prices) {
             title = getString(R.string.prices_fragment);
             fragment = new PricesFragment();
         } else if (id == R.id.nav_manage) {
-
+            title = getString(R.string.manage_fragment);
+            fragment = new ManageFragment();
         } else if (id == R.id.nav_share) {
-
+            title = getString(R.string.share_fragment);
+            fragment = new ShareFragment();
         } else if (id == R.id.nav_send) {
-
+            title = getString(R.string.send_fragment);
+            fragment = new SendFragment();
         }
-
+        if (fragment != null) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.add(R.id.container_body, fragment);
+            fragmentTransaction.commit();
+            getSupportActionBar().setTitle(title);
+        }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
