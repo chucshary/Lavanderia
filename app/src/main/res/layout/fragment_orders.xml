@@ -15,7 +15,7 @@
         android:id="@+id/fragment2"
         android:name="sharychuc.lavanderia.OrderFragment"
         android:layout_width="match_parent"
-        android:layout_height="455dp"
+        android:layout_height="400dp"
         android:layout_gravity="center_horizontal|top"
         android:layout_marginTop="20dp"
         tools:layout="@layout/fragment_order_list" />

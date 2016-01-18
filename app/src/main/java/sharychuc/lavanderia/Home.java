@@ -77,6 +77,7 @@ public class Home extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         String title = item.getTitle().toString();
+        getSupportActionBar().setSubtitle(null);
         if (id == R.id.nav_user) {
             title = getString(R.string.users_fragment);
             fragment = new UsersFragment();
