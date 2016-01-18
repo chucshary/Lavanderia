@@ -10,10 +10,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import sharychuc.lavanderia.dummy.UsersContent;
-import sharychuc.lavanderia.dummy.UsersContent.DummyItem;
+import sharychuc.lavanderia.dummy.OrderContent;
+import sharychuc.lavanderia.dummy.OrderContent.DummyItem;
 
-public class UserFragment extends Fragment {
+/**
+ * A fragment representing a list of Items.
+ * <p/>
+ * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
+ * interface.
+ */
+public class OrderFragment extends Fragment {
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
@@ -25,13 +31,13 @@ public class UserFragment extends Fragment {
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public UserFragment() {
+    public OrderFragment() {
     }
 
     // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
-    public static UserFragment newInstance(int columnCount) {
-        UserFragment fragment = new UserFragment();
+    public static OrderFragment newInstance(int columnCount) {
+        OrderFragment fragment = new OrderFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
         fragment.setArguments(args);
@@ -50,7 +56,7 @@ public class UserFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_user_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_order_list, container, false);
 
         // Set the adapter
         if (view instanceof RecyclerView) {
@@ -61,7 +67,7 @@ public class UserFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyUserRecyclerViewAdapter(UsersContent.ITEMS, mListener));
+            recyclerView.setAdapter(new MyOrderRecyclerViewAdapter(OrderContent.ITEMS, mListener));
         }
         return view;
     }
@@ -70,7 +76,7 @@ public class UserFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-      /* if (context instanceof OnListFragmentInteractionListener) {
+       /* if (context instanceof OnListFragmentInteractionListener) {
             mListener = (OnListFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()

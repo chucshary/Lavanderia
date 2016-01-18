@@ -30,4 +30,11 @@
     <string name="manage_fragment">Herramientas</string>
     <string name="share_fragment">Compartir</string>
     <string name="send_fragment">Enviar</string>
+    <string name="add_user_fragment">Agregar usuario</string>
+    <string name="status">Estado</string>
+    <string name="information">INFORMACIÓN DE USUARIO</string>
+    <string-array name="arrayLaundry">
+        <item>Kg</item>
+        <item>Pza</item>
+    </string-array>
 </resources>
