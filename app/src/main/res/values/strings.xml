@@ -37,4 +37,7 @@
         <item>Kg</item>
         <item>Pza</item>
     </string-array>
+    <string name="title_activity_configuration_laundry">ConfigurationLaundry</string>
+    <string name="title_activity_register_laundry">RegisterLaundry</string>
+    <string name="title_activity_maps">Map</string>
 </resources>
