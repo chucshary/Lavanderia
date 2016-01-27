@@ -2,6 +2,8 @@ package sharychuc.lavanderia;
 
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -14,15 +16,20 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.Console;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerDragListener {
+public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnMarkerDragListener {
 
     private GoogleMap mMap;
-    private Marker marker;
+    private LatLng latLng;
+    private double latitude = 0;
+    private double longitude = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -44,7 +51,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
         // Add a marker in Sydney and move the camera
         LatLng sydney = new LatLng(-34, 151);
-        marker = mMap.addMarker(new MarkerOptions().position(sydney).draggable(true).title("Marker in Sydney"));
+        mMap.addMarker(new MarkerOptions().position(sydney).draggable(true).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
         mMap.setOnMarkerDragListener(this);
     }
@@ -59,6 +66,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onMarkerDragEnd(Marker marker) {
+        latLng = marker.getPosition();
+        latitude=latLng.latitude;
+        longitude=latLng.longitude;
         Toast.makeText(getApplication(), "Marker end " + marker.getId() + "   " + marker.getPosition(), Toast.LENGTH_LONG).show();
         System.out.print("Marker End " + marker.getId() + "   " + marker.getPosition());
     }

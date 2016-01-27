@@ -13,23 +13,35 @@
     tools:showIn="@layout/activity_register_laundry">
 
     <TextView
+        android:id="@+id/txt_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" Nombre de tu lavandería"
-        android:id="@+id/txt_nameLaundry"
-        android:layout_marginTop="35dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:hint="Ej. La Burbuja"
-        android:ems="10"
-        android:id="@+id/editText2"
-        android:layout_below="@+id/txt_nameLaundry"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="31dp"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="35dp"
+        android:text=" Nombre de tu lavandería" />
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_description"
+        android:layout_marginTop="20dp">
+
+        <EditText
+            android:id="@+id/txt_nameLaundry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="34dp"
+            android:capitalize="sentences"
+            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+            android:hint="Ej. La Burbuja"
+            android:inputType="textCapCharacters"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textSize="13sp" />
+    </android.support.design.widget.TextInputLayout>
+
+
 </RelativeLayout>
