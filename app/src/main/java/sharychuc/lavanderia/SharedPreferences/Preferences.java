@@ -2,6 +2,7 @@ package sharychuc.lavanderia.SharedPreferences;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 /**
  * Created by Shary on 27/01/2016.
@@ -21,6 +22,7 @@ public class Preferences {
         this.fields = fields;
         this.values = values;
         this.nameShared = nameShared;
+        Log.d("SHARED ", fields + " " + values);
     }
 
     public void savePreferences() {
@@ -30,7 +32,7 @@ public class Preferences {
             sharedPreferences = rootView.getSharedPreferences(nameShared, Context.MODE_PRIVATE);
             editor = sharedPreferences.edit();
             for (int i = 0; i < _fields.length; i++) {
-                editor.putString(_fields[i], _values[i]);
+                editor.putString(_fields[i].trim(), _values[i].trim());
             }
             editor.commit();
         } catch (Exception e) {
@@ -39,12 +41,17 @@ public class Preferences {
     }
 
     public String[] loadPreferences() {
-        _values = values.split(",");
-        _fields = new String[_values.length];
+        _fields = fields.split(",");
+        _values = new String[_fields.length];
         sharedPreferences = rootView.getSharedPreferences(nameShared, Context.MODE_PRIVATE);
-        for (int i = 0; i < _values.length; i++) {
-            _fields[i] = sharedPreferences.getString(_values[i], "");
+        for (int i = 0; i < _fields.length; i++) {
+            _values[i] = sharedPreferences.getString(_fields[i].trim(), "");
         }
-        return _fields;
+        return _values;
+    }
+
+    public void cleanPreferences(String name) {
+        sharedPreferences = rootView.getSharedPreferences(name, Context.MODE_PRIVATE);
+        sharedPreferences.edit().clear().commit();
     }
 }

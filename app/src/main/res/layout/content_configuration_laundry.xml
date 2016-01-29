@@ -13,31 +13,32 @@
     tools:showIn="@layout/activity_configuration_laundry">
 
     <TextView
+        android:id="@+id/txt_option"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="¿Qué desea hacer?"
-        android:id="@+id/txt_option"
-        android:layout_marginTop="27dp"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:layout_marginTop="@dimen/layout_marginTop"
+        android:text="¿QUÉ DESEA HACER?"
+        android:textSize="@dimen/textsize" />
 
     <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Tengo un código"
         android:id="@+id/btn_code"
-        android:layout_below="@+id/txt_option"
-        android:layout_alignStart="@+id/txt_option"
-        android:layout_marginTop="54dp"/>
-
-    <Button
         style="?android:attr/buttonStyleSmall"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Registrar lavandería"
+        android:layout_alignStart="@+id/txt_option"
+        android:layout_below="@+id/txt_option"
+        android:layout_marginTop="54dp"
+        android:text="Tengo un código" />
+
+    <Button
         android:id="@+id/btn_laundry"
-        android:layout_below="@+id/btn_code"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignStart="@+id/btn_code"
-        android:layout_marginTop="27dp" />
+        android:layout_below="@+id/btn_code"
+        android:layout_marginTop="27dp"
+        android:text="Registrar lavandería" />
 </RelativeLayout>

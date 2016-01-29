@@ -18,11 +18,13 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="35dp"
-        android:text=" Nombre de tu lavandería" />
+        android:layout_marginTop="@dimen/layout_marginTop"
+        android:text="NOMBRE DE TU LAVANDERÍA"
+        android:textSize="@dimen/textsize" />
 
 
     <android.support.design.widget.TextInputLayout
+        android:id="@+id/view2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txt_description"
@@ -34,14 +36,11 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_marginTop="34dp"
-            android:capitalize="sentences"
-            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 "
             android:hint="Ej. La Burbuja"
-            android:inputType="textCapCharacters"
+            android:inputType="textCapWords"
             android:maxLines="1"
-            android:singleLine="true"
-            android:textSize="13sp" />
+            android:singleLine="true" />
     </android.support.design.widget.TextInputLayout>
-
 
 </RelativeLayout>

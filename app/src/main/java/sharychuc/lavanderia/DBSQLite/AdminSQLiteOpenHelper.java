@@ -15,13 +15,14 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
     Tables tables;
     List<String[]> listOfTables;
     String dbTable;
+
     public AdminSQLiteOpenHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        tables= new Tables();
+        tables = new Tables();
         listOfTables = new ArrayList<String[]>();
         listOfTables.add(tables.getLaundry());
         listOfTables.add(tables.getAccount());
@@ -32,11 +33,9 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
             for (int j = 0; j < listOfTables.get(i).length; j++) {
                 if (j == 0) {
                     dbTable = "CREATE TABLE " + listOfTables.get(i)[j] + "(";
-                }
-                else if (j == 1) {
+                } else if (j == 1) {
                     dbTable = dbTable + listOfTables.get(i)[j] + " TEXT PRIMARY KEY,";
-                }
-                else if (j < listOfTables.get(i).length - 1) {
+                } else if (j < listOfTables.get(i).length - 1) {
                     dbTable = dbTable + listOfTables.get(i)[j] + " TEXT,";
                 } else {
                     dbTable = dbTable + listOfTables.get(i)[j] + " TEXT" + ")";

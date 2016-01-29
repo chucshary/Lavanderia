@@ -4,7 +4,7 @@ package sharychuc.lavanderia.DBSQLite;
  * Created by Shary on 26/01/2016.
  */
 public class Tables {
-    private String[] Laundry = {"Laundry", "Id", "Name", "Latitude", "Longitude", "Country", "State", "City", "Address", "IdOwner"};
+    private String[] Laundry = {"Laundry", "Id", "Name", "Latitude", "Longitude", "CountryCode", "Country", "State", "City", "Address"};
     private String[] Account = {"Account", "Id", "Email", "Password", "CreateDate"};
     private String[] User = {"User", "Id", "AccountId", "Name", "LastName", "SecondLastName"};
 

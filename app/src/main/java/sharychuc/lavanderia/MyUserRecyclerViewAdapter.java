@@ -6,10 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.List;
+
 import sharychuc.lavanderia.UserFragment.OnListFragmentInteractionListener;
 import sharychuc.lavanderia.dummy.UsersContent.DummyItem;
-
-import java.util.List;
 
 public class MyUserRecyclerViewAdapter extends RecyclerView.Adapter<MyUserRecyclerViewAdapter.ViewHolder> {
 

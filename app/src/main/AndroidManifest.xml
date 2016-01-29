@@ -4,7 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
@@ -13,13 +13,6 @@
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
-    <uses-permission android:name="package.name.permission.MAPS_RECEIVE" />
-    <uses-permission android:name="com.google.android.permission.RECEIVE" />
-    <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
@@ -80,16 +73,15 @@
             android:name=".NewPassword"
             android:label="@string/title_activity_new_password"
             android:theme="@style/AppTheme.NoActionBar" />
-        <!--
-            <activity
+        <activity
             android:name=".Home"
             android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-
-        <activity
-            android:name=".ConfigurationLaundry"
-            android:label="@string/title_activity_configuration_laundry"
             android:theme="@style/AppTheme.NoActionBar" />
+        <!--
+               <activity
+                   android:name=".ConfigurationLaundry"
+                   android:label="@string/title_activity_configuration_laundry"
+                   android:theme="@style/AppTheme.NoActionBar" />
         -->
         <activity
             android:name=".RegisterLaundry"
@@ -107,13 +99,19 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
+
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps"
             android:theme="@style/AppTheme.NoActionBar" />
         <!--<activity
             android:name=".LoginAuxActivity"
-            android:label="@string/title_activity_login_aux"></activity>-->
+            android:label="@string/title_activity_login_aux"></activity>
+        -->
+        <activity
+            android:name=".PricesActivity"
+            android:label="@string/prices_fragment"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

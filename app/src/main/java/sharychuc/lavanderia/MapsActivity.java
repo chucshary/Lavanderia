@@ -1,27 +1,37 @@
 package sharychuc.lavanderia;
 
-import android.support.v4.app.FragmentActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.widget.Toast;
+import android.view.View;
 
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import java.io.Console;
+import java.util.Arrays;
+
+import sharychuc.lavanderia.Clases.Localizacion;
+import sharychuc.lavanderia.Clases.Ubicacion;
+import sharychuc.lavanderia.SharedPreferences.Preferences;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnMarkerDragListener {
 
     private GoogleMap mMap;
-    private LatLng latLng;
-    private double latitude = 0;
-    private double longitude = 0;
+    private LatLng currentLatLng;
+    private Ubicacion ubicacion;
+    private CameraUpdate cameraUpdate;
+    private Localizacion localizacion;
+    private Preferences preferences;
+    private String information;
 
 
     @Override
@@ -30,30 +40,43 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         setContentView(R.layout.activity_maps);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setSubtitle("Presione y mueva el Marker");
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabLogin);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), PricesActivity.class));
+                MapsActivity.this.finish();
+            }
+        });
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
     }
 
-
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).draggable(true).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        ubicacion = new Ubicacion(MapsActivity.this);
+        currentLatLng = ubicacion.latLng();
+        localizacion = new Localizacion(MapsActivity.this, currentLatLng);
+
+        information = Arrays.toString(localizacion.gps()).replaceAll("\\[|\\]", "");
+        mMap.addMarker(new MarkerOptions().position(currentLatLng)
+                .draggable(true)
+                .title(information)
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(currentLatLng));
+        cameraUpdate = CameraUpdateFactory.newLatLngZoom((currentLatLng), 16);
+        mMap.animateCamera(cameraUpdate);
+        preferences = new Preferences(getApplicationContext(), "Latitude,Longitude,CountryCode,Country, State, City, Address",
+                String.valueOf(currentLatLng.latitude) + "," + String.valueOf(currentLatLng.longitude) + ","
+                        + information, "Laundry");
+        preferences.savePreferences();
         mMap.setOnMarkerDragListener(this);
+
     }
 
     @Override
@@ -66,10 +89,14 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     @Override
     public void onMarkerDragEnd(Marker marker) {
-        latLng = marker.getPosition();
-        latitude=latLng.latitude;
-        longitude=latLng.longitude;
-        Toast.makeText(getApplication(), "Marker end " + marker.getId() + "   " + marker.getPosition(), Toast.LENGTH_LONG).show();
-        System.out.print("Marker End " + marker.getId() + "   " + marker.getPosition());
+        marker.hideInfoWindow();
+        currentLatLng = marker.getPosition();
+        localizacion = new Localizacion(MapsActivity.this, currentLatLng);
+        information = Arrays.toString(localizacion.gps()).replaceAll("\\[|\\]", "");
+        marker.setTitle(information);
+        preferences = new Preferences(getApplicationContext(), "Latitude,Longitude, CountryCode,Country, State, City, Address",
+                String.valueOf(currentLatLng.latitude) + "," + String.valueOf(currentLatLng.longitude) + ","
+                        + information, "Laundry");
+        preferences.savePreferences();
     }
 }

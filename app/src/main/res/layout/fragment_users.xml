@@ -7,7 +7,7 @@
 
     <fragment
         android:layout_width="match_parent"
-        android:layout_height="518dp"
+        android:layout_height="400dp"
         android:name="sharychuc.lavanderia.UserFragment"
         android:id="@+id/fragment"
         android:layout_gravity="left|top"

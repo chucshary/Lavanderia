@@ -38,7 +38,8 @@ public class RegisterLaundry extends AppCompatActivity {
                     cancel = true;
                 } else {
                     uuid = UUID.randomUUID().toString();
-                    preferences = new Preferences(getApplicationContext(), "id,nameLaundy", uuid + "," + nameLaundry.getText().toString().trim(), "Laundry");
+                    preferences = new Preferences(getApplicationContext(), "Id,Name", uuid + "," + nameLaundry.getText().toString().trim(), "Laundry");
+                    preferences.savePreferences();
                     startActivity(new Intent(getApplicationContext(), MapsActivity.class));
                     RegisterLaundry.this.finish();
                 }
